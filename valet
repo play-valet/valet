@@ -1,0 +1,140 @@
+#!/bin/sh
+
+command="$1"
+param1="$2"
+param2="$3"
+param3="$4"
+current="$(pwd)"
+
+toolDir=valet
+confFile=valet.conf
+
+function showHelp() {
+  	echo ""
+	echo "Usage: valet [COMMAND] [OPTIONS]..."
+	echo ""
+	echo " valet -v                : show version"
+	echo " valet -h                : show help"
+	echo ""
+	echo " valet init              : will download tools"
+	echo " valet init conf         : will download tools"
+	echo " valet refresh db        : will download tools"
+	echo " valet refresh conf      : will download tools"
+	echo " valet reset db          : will download tools"
+	echo " valet start             : will download tools"
+	echo " valet start gen sql     : will download tools"
+	echo " valet start migrate     : will download tools"
+	echo " valet start gen slick   : will download tools"
+	echo " valet start gen mvc     : will download tools"
+	echo ""
+}
+function init() {
+	rm -rf $toolDir
+	mkdir -p $toolDir
+	cd $toolDir
+	
+	wget --no-check-certificate  https://github.com/valet-org/valet-default-conf/archive/master.tar.gz -O - | tar xzv
+	wget --no-check-certificate  https://github.com/valet-org/valet-docker-database/archive/master.tar.gz -O - | tar xzv
+	wget --no-check-certificate  https://github.com/valet-org/valet-gen-sql/archive/master.tar.gz -O - | tar xzv
+	wget --no-check-certificate  https://github.com/valet-org/valet-flyway/archive/master.tar.gz -O - | tar xzv
+	wget --no-check-certificate  https://github.com/valet-org/valet-gen-slick-tables/archive/master.tar.gz -O - | tar xzv
+	wget --no-check-certificate  https://github.com/valet-org/valet-gen-mvc/archive/master.tar.gz -O - | tar xzv
+	mv valet-default-conf-master        valet-default-conf
+	mv valet-docker-database-master     valet-docker-database
+	mv valet-gen-sql-master             valet-gen-sql
+	mv valet-flyway-master              valet-flyway
+	mv valet-gen-slick-tables-master    valet-gen-slick-tables
+	mv valet-gen-mvc-master 			valet-gen-mvc
+
+	\cp -f valet-default-conf/valet.conf ../
+
+	cat valet-gen-sql/copy_src_build_sbt.txt >> ../build.sbt
+	cat valet-flyway/copy_src_build_sbt.txt >> ../build.sbt
+	cat valet-gen-slick-tables/copy_src_build_sbt.txt >> ../build.sbt
+	cat valet-gen-mvc/copy_src_build_sbt.txt >> ../build.sbt
+
+	cat valet-flyway/project/plugins.sbt >> ../project/griff-plugins.sbt
+	cat valet-gen-slick-tables/project/plugins.sbt >> ../project/griff-plugins.sbt
+
+	rm -rf valet-gen-sql/build.sbt
+	rm -rf valet-flyway/build.sbt
+	rm -rf valet-gen-slick-tables/build.sbt
+	rm -rf valet-gen-mvc/build.sbt
+}
+function initConf() {
+	cd $current
+	rm -rf $confFile
+	if [ ! -e $toolDir ]; then
+		mkdir $toolDir
+	fi
+	cd $toolDir
+	rm -rf valet-default-conf
+	wget --no-check-certificate  https://github.com/valet-org/valet-default-conf/archive/master.tar.gz -O - | tar xzv
+	mv valet-default-conf-master        valet-default-conf
+	refreshConf
+}
+function refreshDb() {
+	cd $current/$toolDir/valet-docker-database
+    docker stop $(docker ps -a -q);
+    docker rm $(docker ps -a -q);
+    docker-compose up -d mysql5.7
+	cd $current
+}
+function refreshConf() {
+	cd $current/$toolDir/valet-default-conf
+	\cp -f valet.conf $current
+	cd $current
+}
+function resetDb() {
+	refreshDb
+	startGenSql
+}
+function startGenSql() {
+	cd $current
+	sbt "genSql/run hocon ${current}/${confFile}"
+	cd $current
+}
+function startMigration() {
+	cd $current
+	sbt "dbMigration/flywayMigrate"
+	cd $current
+}
+function valetStart() {
+	echo "-- start tasks --"
+}
+
+if [ "$command" == "-v" ]; then
+    echo "0.0.1"
+elif [ "$command" == "-h" ]; then
+    showHelp
+elif [ "$command" == "init" ] && [ "$param1" == "conf" ]; then
+	initConf
+elif [ "$command" == "init" ] && [ "$param1" == "" ]; then
+	init
+elif [ "$command" == "start" ]; then
+	if [ -e $toolDir ] && [ -e $confFile ]; then
+		if [ "$param1" == "gen" ] && [ "$param2" == "sql" ]; then
+			startGenSql
+		elif [ "$param1" == "migrate" ]; then
+			startMigration
+		elif [ "$param1" == "gen" ] && [ "$param2" == "slick" ]; then
+			showHelp
+		else
+			showHelp
+		fi
+	else
+		echo "[error] no exist valet.conf or valet/(tools)"
+	fi
+elif [ "$command" == "refresh" ] && [ "$param1" == "db" ]; then
+	refreshDb
+elif [ "$command" == "refresh" ] && [ "$param1" == "conf" ]; then
+	refreshConf
+elif [ "$command" == "reset" ] && [ "$param1" == "db" ]; then
+	resetDb
+else
+	showHelp
+fi
+
+
+
+
