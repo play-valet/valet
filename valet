@@ -137,7 +137,7 @@ elif [ "$command" == "start" ]; then
             startGenSlickTable
         elif [ "$param1" == "gen" ] && [ "$param2" == "mvc" ]; then
             startGenMvc
-        elif [ "$param1" == "gen" ] && [ "$param2" == "" ]; then
+        elif [ "$param1" == "" ]; then
             valetStart
         else
             showHelp
