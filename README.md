@@ -2,7 +2,7 @@
 
 ### install
 ```
-brew tap valet-org/homebrew-valet
+brew tap play-valet/homebrew-valet
 brew install valet
 valet -v
 ```
@@ -24,5 +24,5 @@ sbt run
 http://localhost:9000/posts
 ```
 
-[conf file](https://github.com/valet-org/valet-default-conf)
+[conf file](https://github.com/play-valet/valet-default-conf)
 
