@@ -10,6 +10,7 @@ valet -v
 ### uninstall
 ```
 brew uninstall --force valet
+brew untap play-valet/valet
 ```
 
 ### usage
