@@ -132,7 +132,7 @@ function valetStart() {
 }
 
 if [ "$command" == "-v" ]; then
-    echo "0.0.1"
+    echo "0.0.3"
 elif [ "$command" == "-h" ]; then
     showHelp
 elif [ "$command" == "init" ] && [ "$param1" == "conf" ]; then
