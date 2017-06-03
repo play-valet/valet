@@ -34,13 +34,13 @@ function init() {
     mkdir -p $toolDir
     cd $toolDir
 
-    wget --no-check-certificate  https://github.com/valet-org/valet-default-conf/archive/master.tar.gz -O - | tar xzv
-    wget --no-check-certificate  https://github.com/valet-org/valet-docker-database/archive/master.tar.gz -O - | tar xzv
-    wget --no-check-certificate  https://github.com/valet-org/valet-gen-sql/archive/master.tar.gz -O - | tar xzv
-    wget --no-check-certificate  https://github.com/valet-org/valet-flyway/archive/master.tar.gz -O - | tar xzv
-    wget --no-check-certificate  https://github.com/valet-org/valet-gen-slick-tables/archive/master.tar.gz -O - | tar xzv
-    wget --no-check-certificate  https://github.com/valet-org/valet-gen-mvc/archive/master.tar.gz -O - | tar xzv
-    wget --no-check-certificate  https://github.com/valet-org/valet-gen-i18n-message/archive/master.tar.gz -O - | tar xzv
+    wget --no-check-certificate  https://github.com/play-valet/valet-default-conf/archive/master.tar.gz -O - | tar xzv
+    wget --no-check-certificate  https://github.com/play-valet/valet-docker-database/archive/master.tar.gz -O - | tar xzv
+    wget --no-check-certificate  https://github.com/play-valet/valet-gen-sql/archive/master.tar.gz -O - | tar xzv
+    wget --no-check-certificate  https://github.com/play-valet/valet-flyway/archive/master.tar.gz -O - | tar xzv
+    wget --no-check-certificate  https://github.com/play-valet/valet-gen-slick-tables/archive/master.tar.gz -O - | tar xzv
+    wget --no-check-certificate  https://github.com/play-valet/valet-gen-mvc/archive/master.tar.gz -O - | tar xzv
+    wget --no-check-certificate  https://github.com/play-valet/valet-gen-i18n-message/archive/master.tar.gz -O - | tar xzv
 
     mv valet-default-conf-master        valet-default-conf
     mv valet-docker-database-master     valet-docker-database
@@ -75,7 +75,7 @@ function initConf() {
     fi
     cd $toolDir
     rm -rf valet-default-conf
-    wget --no-check-certificate  https://github.com/valet-org/valet-default-conf/archive/master.tar.gz -O - | tar xzv
+    wget --no-check-certificate  https://github.com/play-valet/valet-default-conf/archive/master.tar.gz -O - | tar xzv
     mv valet-default-conf-master        valet-default-conf
     refreshConf
 }
@@ -166,3 +166,4 @@ elif [ "$command" == "reset" ] && [ "$param1" == "db" ]; then
 else
     showHelp
 fi
+
