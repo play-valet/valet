@@ -12,8 +12,7 @@ valet -v
 brew uninstall --force valet
 ```
 
-## usage
-
+### usage
 ```
 git clone git@github.com:playframework/play-scala-starter-example.git
 cd play-scala-starter-example/
@@ -24,5 +23,6 @@ sbt run
 http://localhost:9000/posts
 ```
 
+### config
 [conf file](https://github.com/play-valet/valet-default-conf)
 
