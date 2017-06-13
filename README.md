@@ -1,4 +1,4 @@
-# valet-shell
+# valet: scaffold iterater for playframework
 
 ### movie
 [![](http://img.youtube.com/vi/DsGamxsN6BA/0.jpg)](https://www.youtube.com/watch?v=DsGamxsN6BA)
