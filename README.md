@@ -1,5 +1,18 @@
 # valet-shell
 
+### movie
+[![](http://img.youtube.com/vi/DsGamxsN6BA/0.jpg)](https://www.youtube.com/watch?v=DsGamxsN6BA)
+
+### Description
+Valet is under development.Please do not use.
+If you use it please check the source code.
+For the convenience of development valet, the following commands are included, so please be careful when using it.
+```
+    docker stop $(docker ps -a -q);
+    docker rm $(docker ps -a -q);
+```
+
+
 ### install
 ```
 brew tap play-valet/homebrew-valet
