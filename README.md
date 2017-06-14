@@ -43,10 +43,10 @@ http://localhost:9000/posts
 ### Now Trying:scaffold iterater
 Devide Autogen and Your Implement By ```Override```.
 
-)Scaffold.conf + Module.conf => Autogen
-)write your code  
-)[Occur Specification-change]
-)ModifiedScaffold.conf + ModifiedModule.conf => Autogen
-)write your code  
+)Scaffold.conf + Module.conf => Autogen  
+)write your code  
+)[Occur Specification-change]  
+)ModifiedScaffold.conf + ModifiedModule.conf => Autogen  
+)write your code  
 
 
