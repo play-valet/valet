@@ -1,7 +1,7 @@
 # valet: scaffold iterater for playframework
 
 ### movie
-[![](http://img.youtube.com/vi/DsGamxsN6BA/0.jpg)](https://www.youtube.com/watch?v=DsGamxsN6BA)
+[![](http://img.youtube.com/vi/p9_gWWoZjoQ/0.jpg)](https://www.youtube.com/watch?v=p9_gWWoZjoQ)
 
 ### Description
 Valet is under development.Please do not use.
