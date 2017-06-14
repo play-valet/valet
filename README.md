@@ -43,8 +43,8 @@ http://localhost:9000/posts
 ### Now Trying:scaffold iterater
 Devide Autogen and Your Implement By Override.
 
-(1)Scaffold.conf + Module.conf => Autogen.scala (Source Code Autogen)
-(2)Good Run
-(3)ModifiedScaffold.conf + ModifiedModule.conf => Autogen.scala
-(4)Good Run
+(1)Scaffold.conf + Module.conf => Autogen.scala (Source Code Autogen)  
+(2)Good Run  
+(3)ModifiedScaffold.conf + ModifiedModule.conf => Autogen.scala  
+(4)Good Run  
 
