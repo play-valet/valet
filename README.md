@@ -40,7 +40,7 @@ http://localhost:9000/posts
 ### default config file
 [https://github.com/play-valet/valet-default-conf](https://github.com/play-valet/valet-default-conf)
 
-### Trying:scaffold iterater
+### Now Trying:scaffold iterater
 Devide Autogen and Your Implement By Override.
 
 (1)Scaffold.conf + Module.conf => Autogen.scala (Source Code Autogen)
