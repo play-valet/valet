@@ -37,6 +37,14 @@ sbt run
 http://localhost:9000/posts
 ```
 
-### config
-[conf file](https://github.com/play-valet/valet-default-conf)
+### default config file
+[https://github.com/play-valet/valet-default-conf](https://github.com/play-valet/valet-default-conf)
+
+### Trying:scaffold iterater
+Devide Autogen and Your Implement By Override.
+
+(1)Scaffold.conf + Module.conf => Autogen.scala (Source Code Autogen)
+(2)Good Run
+(3)ModifiedScaffold.conf + ModifiedModule.conf => Autogen.scala
+(4)Good Run
 
