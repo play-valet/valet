@@ -41,5 +41,5 @@ http://localhost:9000/posts
 [https://github.com/play-valet/valet-default-conf](https://github.com/play-valet/valet-default-conf)
 
 ### Now Trying:scaffold iterater
-Devide Autogen and Your Implement By ```Override```.
+Devide Autogen and Your Implement By ```Override```.  
 We would like to make it a useful tool for changing specifications repeatedly.
